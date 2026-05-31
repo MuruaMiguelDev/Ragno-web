@@ -1,0 +1,35 @@
+---
+---
+<div class="topbar">
+  <a href="tel:3512180581">📞 351 218-0581</a>
+  <a href="mailto:ragno@ragnofumigaciones.com.ar">✉ ragno@ragnofumigaciones.com.ar</a>
+  <a href="https://api.whatsapp.com/send?phone=5493512180581&text=Hola%20Ragno%20Control%20de%20Plagas%2C%20vengo%20de%20su%20sitio%20web%20y%20deseo%20realizar%20una%20consulta" target="_blank" rel="noopener noreferrer">💬 Consultar por WhatsApp</a>
+</div>
+
+<style>
+  .topbar { 
+    background: var(--verde); 
+    padding: 7px 24px; 
+    text-align: center; 
+    font-size: 12px; 
+    color: var(--negro); 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+    position: relative; 
+    z-index: 200; 
+    display: block; /* Asegura su comportamiento por defecto en desktop */
+  }
+  
+  .topbar a { 
+    color: var(--negro); 
+    text-decoration: none; 
+    margin: 0 14px; 
+  }
+
+  /* Media Query para ocultar en Celulares y Tablets */
+  @media (max-width: 1024px) {
+    .topbar {
+      display: none;
+    }
+  }
+</style>

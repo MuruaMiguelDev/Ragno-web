@@ -1,0 +1,49 @@
+---
+interface Props {
+  icon: string; // Ahora recibirá la ruta de la imagen PNG (ej: "/images/servicios/desinsectacion.png")
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+<div class="service-card">
+  <div class="service-icon">
+    <img src={icon} alt={`Icono de ${title}`} loading="lazy" />
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>
+
+<style>
+  .service-card { background:var(--negro3); border:1px solid var(--gris); border-radius:8px; padding:26px 20px; transition: border-color .25s, transform .25s; cursor:default; }
+  .service-card:hover { border-color:rgba(46,204,106,0.45); transform:translateY(-3px); }
+  
+  /* Contenedor del icono corregido */
+  .service-icon { 
+    width: 46px; 
+    height: 46px; 
+    min-width: 46px;       /* Evita que se deforme el ancho en grillas complejas */
+    flex-shrink: 0;        /* Evita que se aplaste si el texto empuja */
+    background: rgba(46,204,106,0.1); 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 14px; 
+    padding: 12px;         /* Ajustamos el padding para que el bicho quede de un tamaño óptimo adentro */
+    box-sizing: border-box; /* Asegura que el padding no rompa los 46px de tamaño total */
+  }
+
+  /* Ajuste restrictivo para el PNG */
+  .service-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .service-card h3 { font-size:15px; font-weight:600; color:#fff; margin-bottom:8px; }
+  .service-card p { font-size:13px; color:var(--texto); line-height:1.65; }
+</style>

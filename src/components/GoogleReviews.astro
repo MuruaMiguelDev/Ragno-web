@@ -1,0 +1,124 @@
+---
+// src/components/GoogleReviews.astro
+import ReviewCard from './ReviewCard.astro';
+
+const reviews = [
+  {
+    name: "Ulises Davila",
+    date: "Hace 4 meses",
+    text: "Muy buena experiencia, me solucionaron el gran problema que tenía de cucarachas, super recomendable",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/UEV1oERbvDj4dpzD9", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocIZ8EDKgZCBDLYuqzh8ZpT23wHr3XQQC2AI2tOQm__q-L5WlA=w72-h72-p-rp-mo-br100"
+  },
+  {
+    name: "Noelia Frisicaro",
+    date: "Hace 1 mes",
+    text: "Excelentes en la coordinación, super predispuestos, agiles y eficientes. Muy conforme con la fumigación. los volveré a contratar.",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/K8MV3niEZe7Ns1gR8", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjXErl4mNuIe5AOETcBCJuqqcQb4PRJtvX80kaDLbeRkaEwQuhZ5=w72-h72-p-rp-mo-ba12-br100"
+  },
+  {
+    name: "CARINA MARQUES BERTINATTI",
+    date: "Hace 1 mes",
+    text: "Puntualidad y excelente equipo técnico. Muy buen servicio y altamente recomendables.",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/zZj2VvMohG6JetNeA", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocLlsLm9uFgi2o6PULaVeaJqUhk9reoxnjhHt7OspwAmccFrzw=w72-h72-p-rp-mo-br100"
+  }
+  ,
+  {
+    name: "Sofía Moreno",
+    date: "Hace 1 mes",
+    text: "Trabajo con Ragno hace muchos años . Me realizan trabajos de todo tipo de fumigaciones y todas tienen 100 % de resultados ! Súper recomiendo",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/6ScmYJQznWCGACbJ6", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocIu0ZWtM3r5gu0MgbANSASU_uGXqPpcXZqQnlNTflbwTfkqtA=w72-h72-p-rp-mo-br100"
+  }
+  ,
+  {
+    name: "Cristina María Sanabria",
+    date: "Hace 1 mes",
+    text: "Excelente servicio, personal prolijo, confiable, discreto, eficiente y efectivo. Muy recomendable y con garantía de eliminación comolets",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/FJcYM9JTUeoF3joN7", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjX6RLyWMGZ7nvqpRn2ZzciQfEC03cDq680TNYEck2BzcEGYxpkD=w72-h72-p-rp-mo-br100"
+  }
+  ,
+  {
+    name: "Lucia Campos",
+    date: "Hace 1 año",
+    text: "Ya van dos veces que contrato el servicio, y la verdad que excelente. Las cucarachas no volvieron nunca más, muy satisfechos. El precio-calidad muy recomendado, usan un producto fuerte, por que realmente te solucionan el problema. Gracias Ragno!",
+    stars: 5,
+    reviewUrl: "https://maps.app.goo.gl/2U3rF8hcQCNDzuTU8", // <-- Pegá acá el link de esta reseña
+    avatar: "https://lh3.googleusercontent.com/a/ACg8ocKKW6z6yq4ovZapshD19O0o3Ewgd9UNyNdTGpFrWfMzF7M0yA=w72-h72-p-rp-mo-br100"
+  }
+];
+---
+
+<section class="reviews-section">
+  <div class="container">
+    <div class="reviews-heading">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="google-score">
+        <span class="score-num">4.7</span>
+        <div class="score-stars">★★★★★</div>
+        <span class="score-text">en Google Reviews</span>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      {reviews.map((review) => (
+        <ReviewCard {...review} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    padding: 5rem 1rem;
+    background-color: #1a1a1a;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reviews-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .reviews-heading h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .google-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .score-num {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .score-stars { color: #ffc107; }
+  .score-text { color: #888; font-size: 0.9rem; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>

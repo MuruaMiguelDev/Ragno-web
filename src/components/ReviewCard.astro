@@ -1,0 +1,128 @@
+---
+// src/components/ReviewCard.astro
+interface Props {
+  name: string;
+  date: string;
+  text: string;
+  stars: number;
+  reviewUrl: string; // <-- El enlace directo a la reseña
+  avatar?: string;
+}
+
+const { name, date, text, stars, reviewUrl, avatar = '/images/default-avatar.png' } = Astro.props;
+---
+
+<a href={reviewUrl} target="_blank" rel="noopener noreferrer" class="review-card">
+  <div class="review-header">
+    <img src={avatar} alt={name} class="avatar" loading="lazy" />
+    <div class="user-info">
+      <h4>{name}</h4>
+      <span class="date">{date}</span>
+    </div>
+    <!-- Un icono sutil de Google para identificar la fuente -->
+    <img src="/pngwing.com.png" alt="Google" class="google-logo" />
+  </div>
+  
+  <div class="stars">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <span class={i < stars ? "star filled" : "star"}>★</span>
+    ))}
+  </div>
+
+  <p class="review-text">"{text}"</p>
+  
+  <div class="review-footer">
+    <span>Ver opinión original</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+  </div>
+</a>
+
+<style>
+  .review-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-decoration: none; /* Quitamos el subrayado de enlace */
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Efecto visual para que se note que es clicleable */
+  .review-card:hover {
+    transform: translateY(-4px);
+    border-color: #444;
+    background: #262626;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-info h4 {
+    color: #fff;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .date {
+    color: #888;
+    font-size: 0.8rem;
+  }
+
+  .google-logo {
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    align-self: flex-start;
+  }
+
+  .stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+  }
+
+  .star.filled { color: #ffc107; }
+  .star:not(.filled) { color: #555; }
+
+  .review-text {
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+    flex-grow: 1; /* Empuja el footer hacia abajo para que queden alineadas */
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #ffc107; /* Color de acento */
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .review-card:hover .review-footer {
+    opacity: 1;
+  }
+
+  .external-icon {
+    display: inline-block;
+  }
+</style>

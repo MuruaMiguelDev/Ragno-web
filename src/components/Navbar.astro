@@ -1,0 +1,61 @@
+---
+---
+<nav id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://ragnofumigaciones.com.ar/wp-content/uploads/2022/07/Logo-1.png" alt="Ragno Logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#plagas">Plagas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="nav-tel">CONSULTAS LAS 24HS</span>
+      <a href="https://api.whatsapp.com/send?phone=5493512180581&text=Hola%20Ragno%20Control%20de%20Plagas%2C%20vengo%20de%20su%20sitio%20web%20y%20deseo%20solicitar%20una%20cotizacion." target="_blank" rel="noopener noreferrer" class="nav-cta">Cotizar Ahora</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav { position: fixed; top:33px; width:100%; z-index:100; background: rgba(13,13,13,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(46,204,106,0.12); transition: top .3s, background .3s; }
+  .nav-inner { max-width:1100px; margin:0 auto; padding: 0 24px; display:flex; align-items:center; justify-content:space-between; height:62px; gap:24px; }
+  .nav-logo img { height:44px; width:44px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(46,204,106,0.3); }
+  .nav-links { display:flex; gap:28px; list-style:none; }
+  .nav-links a { color: var(--texto); text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-family:'Oswald',sans-serif; font-weight:400; transition: color .2s; }
+  .nav-links a:hover { color: var(--verde); }
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .nav-tel { color: var(--verde); font-size:13px; font-family:'Oswald',sans-serif; letter-spacing:1px; white-space:nowrap; }
+  .nav-cta { background: var(--verde); color: var(--negro); font-family:'Oswald',sans-serif; font-weight:600; font-size:12px; letter-spacing:1.5px; padding: 8px 18px; border-radius:3px; text-decoration:none; text-transform:uppercase; transition: background .2s; white-space:nowrap; }
+  .nav-cta:hover { background: var(--verde-dark); }
+
+  /* Media Query unificada para Celulares y Tablets (coincide con el Topbar) */
+  @media(max-width: 1024px) {
+    nav {
+      top: 0px !important; /* Fuerza al navbar a pegarse arriba cuando desaparece el topbar */
+    }
+    .nav-links { 
+      display:none; 
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('mainNav');
+    if (nav) {
+      // Detectamos si es pantalla chica (Mobile/Tablet)
+      const isMobile = window.innerWidth <= 1024;
+
+      if (window.scrollY > 60) {
+        nav.style.top = '0px';
+        nav.style.background = 'rgba(13,13,13,0.98)';
+      } else {
+        // Si es mobile se queda en 0px, si es desktop vuelve a 33px para dejar ver el topbar
+        nav.style.top = isMobile ? '0px' : '33px';
+        nav.style.background = 'rgba(13,13,13,0.92)';
+      }
+    }
+  });
+</script>

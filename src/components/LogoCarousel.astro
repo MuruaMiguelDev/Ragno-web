@@ -1,0 +1,126 @@
+---
+// LogoCarousel.astro
+
+// Array de prueba con los logos (reemplazá con las rutas de tus imágenes reales)
+const logos = [
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2025/07/CAVIWA-LOGOTIPO-e1582294746248.jpg', alt: 'Caviwa' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2025/07/logo-antares.png', alt: 'Antares' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2025/07/CORRUGADORA-CENTRO.png', alt: 'Corrugadora Centro' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2025/07/CREMOLATTI.jpeg', alt: 'Cremolatti' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2023/05/leroma.png', alt: 'Leroma' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2023/05/famiglia-e1684336186320.png', alt: 'Famiglia' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2022/07/logo.png', alt: 'Punto33' },
+  { src: 'https://ragnofumigaciones.com.ar/wp-content/uploads/2025/07/2560px-Puma_Energy_logo.svg.png', alt: 'Puma Energy' },
+];
+
+// Duplicamos la lista para crear el efecto de loop infinito sin baches
+const doubleLogos = [...logos, ...logos];
+---
+
+<div class="carousel-container">
+  <h3 class="carousel-title">NUESTROS CLIENTES:</h3>
+  
+  <div class="slider">
+    <div class="slide-track">
+      {doubleLogos.map((logo) => (
+        <div class="slide">
+          <img src={logo.src} alt={logo.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: #D6D6D6; /* O el color de fondo de tu web */
+    text-align: center;
+  }
+
+  .carousel-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Contenedor principal del slider que oculta lo que desborda */
+  .slider {
+    width: 100%;
+    height: 150px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Degradados sutiles a los costados para dar efecto de desvanecido (opcional, como en muchos diseños modernos) */
+  .slider::before,
+  .slider::after {
+    content: "";
+    height: 100px;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .slider::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  }
+  .slider::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  }
+
+  /* El contenedor que se mueve. Calculamos el ancho total basado en la cantidad de logos */
+  .slide-track {
+    display: flex;
+    width: calc(450px * 10); /* 450px de cada logo * 10 (los 5 originales + 5 duplicados) */
+    animation: scroll 25s linear infinite;
+  }
+
+  /* Pausar la animación cuando el usuario pasa el mouse por arriba (muy útil para usabilidad) */
+  .slide-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Cada logo individual */
+  .slide {
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .slide img {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px; /* Controla que ningún logo quede gigante */
+    object-fit: contain;
+    filter: grayscale(100%); opacity: 0.7; /* Opcional: los hace grises como en la imagen. Sacalo si querés color. */
+    transition: all 0.3s ease;
+  }
+
+  .slide img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* La magia de la animación en CSS */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Se desplaza exactamente la mitad del ancho total (la tanda original) y vuelve a empezar de golpe de forma imperceptible */
+      transform: translateX(calc(-250px * 5)); 
+    }
+  }
+</style>

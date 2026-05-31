@@ -1,11 +1,428 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Topbar from '../components/Topbar.astro';
+import Navbar from '../components/Navbar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PlagaCard from '../components/PlagaCard.astro';
+import LogoCarousel from '../components/LogoCarousel.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Ragno Fumigaciones – Córdoba">
+  <Topbar />
+  <Navbar />
+
+  <header class="hero">
+    <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/video/ragno-video-hero.mp4" type="video/mp4" />
+    </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-tag">Servicio Técnico Autorizado</div>
+        <h1>Control de Plagas <span>Ragno Fumigaciones</span></h1>
+        <p class="hero-sub">Soluciones definitivas para industrias, comercios y hogares en Córdoba. Monitoreo constante y certificados oficiales válidos para entes reguladores.</p>
+        <div class="hero-btns">
+          <a href="https://api.whatsapp.com/send?phone=5493512180581&text=Hola%20Ragno%20Control%20de%20Plagas%2C%20vengo%20de%20su%20sitio%20web%20y%20deseo%20solicitar%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="btn-green">Solicitar Presupuesto ➔</a>
+          <a href="#servicios" class="btn-outline">Ver Servicios</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><div class="n">10+</div><div class="l">Años de Trayectoria</div></div>
+        <div class="stat-card"><div class="n">100%</div><div class="l">Efectividad Garantizada</div></div>
+        <div class="stat-card"><div class="n">24/7</div><div class="l">Atención de Emergencias</div></div>
+        <div class="stat-card"><div class="n">ANMAT</div><div class="l">Productos Homologados</div></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Qué Hacemos</div>
+        <h2>Nuestros Servicios</h2>
+        <p>Aplicamos metodologías MIP (Manejo Integrado de Plagas) adaptadas a cada necesidad técnica y legal.</p>
+      </div>
+      <div class="services-grid">
+        <ServiceCard icon="/images/servicios/insecticida.png" title="Desinsectación" description="Eliminación eficaz de cucarachas, hormigas, chinches y todo tipo de insectos rastreros y voladores." />
+        <ServiceCard icon="/images/servicios/rata.png" title="Desratización" description="Sistemas de cebado y trampeo de alta seguridad para el control biológico de roedores." />
+        <ServiceCard icon="/images/servicios/desinfeccion-del-transporte.png" title="Desinfección" description="Tratamientos ambientales avanzados contra virus, bacterias y hongos en áreas críticas." />
+        <ServiceCard icon="/images/servicios/lista-de-verificacion.png" title="MIP Industrial" description="Manejo Integrado de Plagas adaptado a auditorías internacionales y normas de inocuidad." />
+      </div>
+    </div>
+  </section>
+
+  <LogoCarousel />
+
+  <section id="nosotros">
+    <div class="container nosotros-grid">
+<div class="nosotros-img">
+  <!-- Primera imagen (Se expande) -->
+  <img src="https://ragnofumigaciones.com.ar/wp-content/uploads/2022/07/RAGNO1-16-1-scaled.jpg" alt="Personal Técnico" class="img-primaria" />
+  
+  <!-- Segunda imagen (Se contrae) - Reemplazá este enlace por la otra foto -->
+  <img src="https://ragnofumigaciones.com.ar/wp-content/uploads/2022/07/RAGNO1-25-1-scaled.jpg" alt="Personal Técnico Alternativo" class="img-secundaria" />
+  
+  <div class="nosotros-img-badge">
+    <div class="big">MIP</div>
+    <div class="lbl">Manejo Integrado de Plagas</div>
+  </div>
+</div>
+      <div class="nosotros-text">
+        <h2>Compromiso y Rigor Profesional</h2>
+        <p>En Ragno Fumigaciones no solo eliminamos el problema, sino que analizamos los factores estructurales y ambientales para evitar la reaparición de la plaga.</p>
+        <div class="nosotros-checks">
+          <div class="check-item">
+            <div class="check-dot">✓</div>
+            <span>Documentación lista para auditorías municipales y gubernamentales.</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">✓</div>
+            <span>Productos de laboratorios líderes (Bayer, Chemotecnica) aprobados por ANMAT.</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">✓</div>
+            <span>Técnicos altamente capacitados y en constante actualización.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Testimonios</div>
+        </div>
+        <GoogleReviews />
+      </div>
+    </section>
+
+  <section id="plagas">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Identificación</div>
+        <h2>Catálogo de Plagas Comunes</h2>
+        <p>Selecciona una categoría para conocer sus riesgos asociados y nuestra metodología de tratamiento profesional.</p>
+      </div>
+      
+<div class="plagas-grid">
+        <PlagaCard id="cucarachas" icon="/images/plagas/cucaracha.png" title="Cucarachas" risk="alto" />
+        <PlagaCard id="roedores" icon="/images/plagas/rata.png" title="Roedores" risk="alto" />
+        <PlagaCard id="alacranes" icon="/images/plagas/escorpion.png" title="Alacranes" risk="alto" />
+        <PlagaCard id="hormigas" icon="/images/plagas/hormigas-de-felpa.png" title="Hormigas" risk="medio" />
+        <PlagaCard id="taladros" icon="/images/plagas/parasito.png" title="Taladros de Madera" risk="alto" />
+        <PlagaCard id="polillas" icon="/images/plagas/polilla.png" title="Polillas" risk="medio" />
+      </div>
+
+      <div id="plagaDetail" class="plaga-detail">
+        <h3 id="detailTitle">Selecciona una plaga</h3>
+        <p id="detailText">Haz clic en cualquiera de las tarjetas superiores para ver el análisis de riesgo y el plan de acción.</p>
+        <button id="closeBtn" class="close-btn">Cerrar Detalle</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Solicitá tu presupuesto o turno hoy</h2>
+    <p>Especialistas en control de plagas y planes MIP para industrias, comercios y hogares en Córdoba Capital y alrededores. Contactanos y coordinamos tu visita técnica.</p>
+<div class="cta-btns">
+  <a href="https://api.whatsapp.com/send?phone=5493512180581&text=Hola%20Ragno%20Control%20de%20Plagas%2C%20vengo%20de%20su%20sitio%20web%20y%20deseo%20solicitar%20asesoramiento%20técnico." target="_blank" rel="noopener noreferrer" class="btn-dark">
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="btn-icon" loading="lazy" />
+    Enviar WhatsApp
+  </a>
+  <a href="tel:3512180581" class="btn-dark-outline">Llamar Ahora</a>
+</div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <h4>Ragno Fumigaciones</h4>
+        <p>Servicios profesionales de control de plagas y saneamiento ambiental en la provincia de Córdoba. Eficacia, seguridad y cumplimiento normativo.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <a href="#servicios">Servicios Disponibles</a>
+        <a href="#nosotros">Sobre la Empresa</a>
+        <a href="#plagas">Control de Plagas</a>
+        <a href="#contacto">Contacto Directo</a>
+      </div>
+      <div>
+        <h4>Contacto Oficial</h4>
+        <p>Córdoba, Argentina</p>
+        <p>Teléfono: 351 218-0581</p>
+        <p>Email: ragno@ragnofumigaciones.com.ar</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Ragno Fumigaciones. Todos los derechos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/ragnofumigaciones" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/ragnofumigaciones" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
 </Layout>
+
+<style>
+  /* HERO STYLES */
+  .hero { position:relative; width:100%; height:100vh; min-height:600px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-video-wrap { position:absolute; inset:0; z-index:0; }
+  .hero-video-wrap video { width:100%; height:100%; object-fit:cover; opacity:0.55; }
+  .hero-overlay { position:absolute; inset:0; background: linear-gradient(135deg, rgba(13,13,13,0.82) 0%, rgba(13,13,13,0.5) 50%, rgba(13,13,13,0.75) 100%); z-index:1; }
+  .hero-content { position:relative; z-index:2; max-width:1100px; width:100%; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:1fr 420px; gap:48px; align-items:center; padding-top:96px; }
+  .hero-tag { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(46,204,106,0.35); color:var(--verde); font-size:11px; letter-spacing:3px; padding:5px 14px; border-radius:2px; font-family:'Oswald',sans-serif; margin-bottom:22px; }
+  .hero-tag::before { content:''; width:6px; height:6px; background:var(--verde); border-radius:50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 { font-size:clamp(34px,4.5vw,60px); font-weight:700; line-height:1.05; margin-bottom:18px; color:#fff; }
+  .hero h1 span { color: var(--verde); display:block; }
+  .hero-sub { color: rgba(255,255,255,0.7); font-size:16px; line-height:1.75; margin-bottom:32px; max-width:480px; }
+  .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-green { background:var(--verde); color:var(--negro); font-family:'Oswald',sans-serif; font-weight:700; font-size:13px; letter-spacing:1.5px; padding:13px 26px; border-radius:3px; text-decoration:none; text-transform:uppercase; transition: background .2s, transform .15s; display:inline-flex; align-items:center; gap:7px; }
+  .btn-green:hover { background:var(--verde-dark); transform:translateY(-1px); }
+  .btn-outline { border:1px solid rgba(255,255,255,0.25); color:#fff; font-family:'Oswald',sans-serif; font-weight:400; font-size:13px; letter-spacing:1.5px; padding:13px 26px; border-radius:3px; text-decoration:none; text-transform:uppercase; transition: border-color .2s, color .2s; }
+  .btn-outline:hover { border-color: var(--verde); color: var(--verde); }
+  .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .stat-card { background:rgba(22,22,22,0.85); border:1px solid rgba(46,204,106,0.2); border-radius:8px; padding:22px 16px; text-align:center; backdrop-filter:blur(6px); }
+  .stat-card .n { font-family:'Oswald',sans-serif; font-size:32px; font-weight:700; color:var(--verde); line-height:1; }
+  .stat-card .l { font-size:11px; color: var(--texto); margin-top:5px; letter-spacing:0.5px; line-height:1.4; }
+  .hero-scroll { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:6px; color:rgba(255,255,255,0.3); font-size:10px; letter-spacing:2px; font-family:'Oswald',sans-serif; }
+  .scroll-line { width:1px; height:36px; background:linear-gradient(to bottom, rgba(46,204,106,0.6), transparent); animation: scrolldown 2s infinite; }
+  @keyframes scrolldown { 0%{opacity:0;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1)} 100%{opacity:0} }
+
+  /* SECTION PACKS */
+  #servicios { background:var(--negro2); }
+  .services-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:18px; }
+  
+  .section-label { font-family:'Oswald',sans-serif; color:var(--verde); font-size:24px; letter-spacing:3px; margin-bottom:8px; }
+
+  #nosotros { background:var(--negro); }
+  .nosotros-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.nosotros-img { 
+  position: relative; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  height: 420px; /* Fijamos la altura en el contenedor contenedor para el posicionamiento absoluto */
+}
+
+/* Estilos base compartidos para ambas imágenes */
+.nosotros-img img { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+}
+
+/* --- NUEVAS ANIMACIONES --- */
+
+/* Imagen 1: Se expande primero, luego hace la transición */
+.img-primaria {
+  animation: expandirLuegoTransicion 8s infinite ease-in-out;
+}
+
+/* Imagen 2: Aparece, se contrae primero, luego hace la transición */
+.img-secundaria {
+  animation: contraerLuegoTransicion 8s infinite ease-in-out;
+}
+
+@keyframes expandirLuegoTransicion {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.08); /* Se expande por completo acá */
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.08); /* Mantiene el tamaño expandido mientras desaparece */
+  }
+  90% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Vuelve a aparecer limpia */
+  }
+}
+
+@keyframes contraerLuegoTransicion {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  40% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08); /* Aparece ya expandida */
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1); /* Se contrae por completo acá */
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1); /* Desaparece en su tamaño original */
+  }
+}
+
+/* --- TEXTOS (Se mantienen intactos) --- */
+.nosotros-img-badge { 
+  position: absolute; 
+  bottom: 20px; 
+  left: 20px; 
+  background: rgba(13,13,13,0.88); 
+  border: 1px solid rgba(46,204,106,0.3); 
+  border-radius: 8px; 
+  padding: 14px 18px; 
+  backdrop-filter: blur(6px); 
+  z-index: 10; /* Asegura que el badge quede siempre por encima de las imágenes animadas */
+}
+.nosotros-img-badge .big { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--verde); line-height: 1; }
+.nosotros-img-badge .lbl { font-size: 11px; color: var(--texto); margin-top: 3px; }
+  .nosotros-checks { display:flex; flex-direction:column; gap:14px; margin-top:28px; }
+  .check-item { display:flex; align-items:flex-start; gap:12px; }
+  .check-dot { width:22px; height:22px; background:rgba(46,204,106,0.15); border:1px solid rgba(46,204,106,0.35); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--verde); flex-shrink:0; margin-top:1px; }
+  .check-item span { font-size:14px; color:rgba(255,255,255,0.8); line-height:1.6; }
+
+  #plagas { background:var(--negro); }
+  .plagas-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:12px; }
+  .plaga-detail { display:none; margin-top:20px; background:var(--negro2); border:1px solid rgba(46,204,106,0.3); border-left:3px solid var(--verde); border-radius:8px; padding:28px 32px; }
+  :global(.plaga-detail.show) { display:block; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .plaga-detail h3 { font-size:20px; color:var(--verde); margin-bottom:14px; }
+  .plaga-detail p { font-size:14px; color:var(--texto); line-height:1.8; }
+  .plaga-detail .close-btn { margin-top:18px; background:transparent; border:1px solid var(--gris2); color:var(--texto); font-size:11px; padding:6px 16px; border-radius:3px; cursor:pointer; font-family:'Oswald',sans-serif; letter-spacing:1.5px; text-transform:uppercase; transition: border-color .2s, color .2s; }
+  .plaga-detail .close-btn:hover { border-color:var(--verde); color:var(--verde); }
+
+  #contacto { background: var(--verde); padding:88px 24px; text-align:center; position:relative; overflow:hidden; }
+  #contacto h2 { font-size:clamp(24px,3vw,42px); color:var(--negro); margin-bottom:12px; position:relative; z-index:1; }
+  #contacto p { font-size:16px; color:rgba(0,0,0,0.6); margin-bottom:36px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.7; position:relative; z-index:1; }
+.cta-btns { 
+  display: flex; 
+  gap: 14px; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  position: relative; 
+  z-index: 1; 
+}
+
+.btn-dark { 
+  background: var(--negro); 
+  color: var(--verde); 
+  font-family: 'Oswald', sans-serif; 
+  font-weight: 700; 
+  font-size: 14px; 
+  letter-spacing: 1.5px; 
+  padding: 14px 30px; 
+  border-radius: 3px; 
+  text-decoration: none; 
+  text-transform: uppercase; 
+  transition: background .2s; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 10px; /* Separación perfecta entre el PNG y el texto */
+}
+
+/* Estilos específicos para el icono PNG dentro del botón */
+.btn-dark .btn-icon {
+  height: 18px;          /* Altura del icono alineada al tamaño de la fuente */
+  width: auto;           /* Mantiene la proporción horizontal del PNG */
+  max-width: 22px;       /* Límite de ancho por si las dudas */
+  object-fit: contain;   /* Evita que se deforme */
+  flex-shrink: 0;        /* Evita que el icono se aplaste si el texto se ajusta en mobile */
+}
+  .btn-dark-outline { border:2px solid rgba(0,0,0,0.5); color:var(--negro); font-family:'Oswald',sans-serif; font-weight:600; font-size:14px; letter-spacing:1.5px; padding:13px 30px; border-radius:3px; text-decoration:none; text-transform:uppercase; transition:background .2s; }
+  .btn-dark-outline:hover { background:rgba(0,0,0,0.08); }
+
+  footer { background: #080808; padding:52px 24px 0; }
+  .footer-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding-bottom:40px; border-bottom:1px solid #1a1a1a; }
+  footer h4 { font-size:13px; font-weight:600; color:#fff; margin-bottom:18px; letter-spacing:1.5px; }
+  footer p { font-size:13px; color:#666; line-height:1.8; }
+  footer a { font-size:13px; color:#666; text-decoration:none; line-height:2.2; display:block; transition:color .2s; }
+  footer a:hover { color:var(--verde); }
+  .footer-bottom { max-width:1100px; margin:0 auto; padding:20px 0; display:flex; justify-content:space-between; align-items:center; }
+  .footer-bottom p { font-size:11px; color:#333; }
+  .social-links { display:flex; gap:20px; }
+  .social-links a { color:#444; font-size:12px; text-decoration:none; transition:color .2s; letter-spacing:1px; font-family:'Oswald',sans-serif; }
+  .social-links a:hover { color:var(--verde); }
+
+  @media(max-width:900px) {
+    .hero-content { grid-template-columns:1fr; }
+    .hero-stats { grid-template-columns:1fr 1fr; }
+    .nosotros-grid { grid-template-columns:1fr; }
+    .footer-inner { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:600px) {
+    .footer-inner { grid-template-columns:1fr; }
+    .hero h1 { font-size:32px; }
+  }
+</style>
+
+<script>
+  // Datos Dinámicos extraídos de tu archivo de plagas
+  const plagaData = {
+    cucarachas: { title: "Cucarachas", text: "Controlamos Blatella germanica (de cocina) y Periplaneta americana (de cloaca). Su rápida reproducción puede contaminar alimentos y transmitir patógenos. Usamos geles de última generación (fipronil/imidacloprid) y pulverizaciones dirigidas sin necesidad de desalojar el ambiente." },
+    roedores: { title: "Roedores", text: "Tratamientos contra laucha (Mus musculus), rata de tirante (Rattus rattus) y rata de cloaca (Rattus norvegicus). Implementamos estaciones de cebado cerradas con llave y trampas mecánicas en zonas críticas de alimentos, garantizando seguridad y efectividad bajo normas de inocuidad." },
+    alacranes: { title: "Alacranes", text: "El Tityus trivittatus es altamente peligroso en Córdoba. Su control requiere la eliminación de su alimento (cucarachas) y la aplicación de barreras químicas perimetrales con piretroides de alta persistencia microencapsulados, además de asesoramiento en exclusión física." },
+    hormigas: { title: "Hormigas", text: "Hormiga negra podadora y hormiga invasora de interiores. Localizamos los nidos y aplicamos cebos granulados específicos que las obreras transportan al hongo del hormiguero, eliminando la colonia desde la raíz de forma limpia y ecológica." },
+    taladros: { title: "Taladros de Madera", text: "Los insectos xilófagos como el taladro de los muebles o el bicho taladro pueden causar pérdidas enormes. Realizamos tratamientos con fosfina y termonebulización para eliminarlos completamente." },
+    polillas: { title: "Polillas", text: "La polilla de la harina (Plodia interpunctella) ataca cereales, frutos secos y productos almacenados. Una hembra puede poner hasta 400 huevos. Actuamos con trampas de feromonas, insecticidas y asesoramiento en almacenamiento seguro." }
+  };
+
+  function openPlaga(id) {
+    const data = plagaData[id];
+    if (!data) return;
+    
+    const detailTitle = document.getElementById('detailTitle');
+    const detailText = document.getElementById('detailText');
+    const detail = document.getElementById('plagaDetail');
+    
+    if (detailTitle && detailText && detail) {
+      detailTitle.textContent = data.title;
+      detailText.textContent = data.text;
+      detail.classList.add('show');
+      
+      setTimeout(() => detail.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+    }
+    
+    document.querySelectorAll('.plaga-card').forEach(c => c.classList.remove('active'));
+    const activeCard = document.querySelector(`[data-id="${id}"]`);
+    if (activeCard) activeCard.classList.add('active');
+  }
+
+  function closePlaga() {
+    const detail = document.getElementById('plagaDetail');
+    if (detail) detail.classList.remove('show');
+    document.querySelectorAll('.plaga-card').forEach(c => c.classList.remove('active'));
+  }
+
+  // Inicializar Event Listeners
+  document.querySelectorAll('.plaga-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      if (id) openPlaga(id);
+    });
+  });
+
+  const closeBtn = document.getElementById('closeBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closePlaga);
+  }
+</script>

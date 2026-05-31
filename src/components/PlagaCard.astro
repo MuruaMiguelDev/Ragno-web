@@ -1,0 +1,48 @@
+---
+interface Props {
+  id: string;
+  icon: string; // Ahora recibirá la ruta de la imagen (ej: "/images/plagas/cucaracha.png")
+  title: string;
+  risk: 'alto' | 'medio';
+}
+
+const { id, icon, title, risk } = Astro.props;
+---
+<div class="plaga-card" data-id={id}>
+  <div class="icon">
+    <!-- Reemplazamos el texto plano por la etiqueta de imagen -->
+    <img src={icon} alt={`Icono de ${title}`} loading="lazy" />
+  </div>
+  <h4>{title}</h4>
+  <span class={`risk risk-${risk}`}>Riesgo {risk}</span>
+</div>
+
+<style>
+  .plaga-card { background:var(--negro2); border:1px solid var(--gris); border-radius:8px; padding:18px 14px; cursor:pointer; transition: border-color .2s, background .2s; }
+  .plaga-card:hover, :global(.plaga-card.active) { border-color:var(--verde); background: rgba(46,204,106,0.05); }
+  
+  /* Ajustamos el contenedor del icono para controlar el tamaño de la imagen */
+.plaga-card .icon { 
+    height: 32px;        /* Altura máxima asignada al contenedor */
+    width: 32px;         /* Ancho fijo para mantener la proporción cuadrada */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el icono a la izquierda */
+    margin-bottom: 12px; 
+    overflow: hidden;    /* Evita cualquier desborde accidental */
+  }
+  
+  /* Ajuste restrictivo para la imagen */
+  .plaga-card .icon img {
+    max-height: 100%;    /* No permite que supere los 32px del contenedor */
+    max-width: 100%;     /* Evita que se estire a lo ancho */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Mantiene la proporción original del bicho */
+  }
+
+  .plaga-card h4 { font-size:13px; font-weight:600; color:#fff; margin-bottom:6px; }
+  .risk { font-size:9px; letter-spacing:1px; padding:2px 8px; border-radius:20px; display:inline-block; font-family:'Oswald',sans-serif; font-weight:500; text-transform: uppercase; }
+  .risk-alto { background:rgba(231,76,60,0.15); color:#e74c3c; }
+  .risk-medio { background:rgba(241,196,15,0.1); color:#e6b800; }
+</style>
